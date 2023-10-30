@@ -1,0 +1,52 @@
+<div class="container col-6">
+  <div class="form-group">
+    <label for="usuario">Seu Apelido</label>
+    <span id="usuario" class="form-control">{{ usuario }}</span>
+  </div>
+
+  <div class="form-group">
+    <label for="usuario">Destino</label>
+    <select id="destino" class="form-control">
+      <option value="joao">Joao</option>
+      <option value="pedro">Pedro</option>
+      <option value="samuel">Samuel</option>
+      <option value="lucas">Lucas</option>
+      <option value="todos">Todos</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="mensagem">Mensagem</label>
+    <textarea
+      class="form-control"
+      id="mensagem"
+      rows="2"
+      (keyup)="onInputKeyUp($event)"
+    ></textarea>
+  </div>
+  <button
+    class="btn btn-primary my-3"
+    (click)="enviarMensagem()"
+    [disabled]="disableEnviarMensagem"
+  >
+    Enviar Mensagem
+  </button>
+</div>
+
+<div class="row">
+  <div class="col-12">
+    <hr />
+  </div>
+</div>
+
+<div class="container col-6">
+  <ul>
+    <li *ngFor="let mensagem of mensagens">
+      <span
+        ><strong> {{ mensagem.usuario }} </strong>
+      </span>
+      <small>Para {{ mensagem.usuarioDestino }}</small>
+      <p>{{ mensagem.message }}</p>
+    </li>
+  </ul>
+</div>
